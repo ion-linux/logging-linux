@@ -48,7 +48,11 @@ systemd-journald ->>> /dev/log ->>> rsyslogd -> /var/log
 # Configure rsyslog to receive logs from remote location
 Sending machine
 ```
-*.* @@1.2.3.4:514
+# for TCP use @@IP
+cron.* @@1.2.3.4:514
+
+# for UDP use @IP
+ftp.* @6.7.8.9:514
 ```
 
 Receiving

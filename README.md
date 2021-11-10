@@ -1,24 +1,21 @@
 # logging-linux
 
-# Who provides loggign system in linux
+# Who provides logging system in linux
 Rsyslog
 systemd-journal
-
 
 # journalctl
 `journalctl -u <unit>` - info about the unit\
 `journalctl --dmesg` - kernel messages\
-`journalctl -u crond --since yesterday --until 9:00 -p info` - filters combined\
+`journalctl -u crond --since yesterday --until 9:00 -p info`\
 `journalctl UNIT=sshd` - show logs for this specific unit, tab for options\
-`journalctl status`\
+`journalctl status`
 
 # rsyslogd
 - facility - what syslogd should start logging for
-- priority - 
-- destination
- - file
- - user that is logged in
- - specific module
+- priority 
+- destination (file, user logged-in, module)\
+[SYSLOG facility/severity](https://en.wikipedia.org/wiki/Syslog)
 
 Useful when writing shell scripts (appears in logs):
 > logger -s -p user.info TESTING HELLO
@@ -45,7 +42,7 @@ systemd-journald ->>> /dev/log ->>> rsyslogd -> /var/log
 /etc/logrotate.d/
 
 
-# Configure rsyslog to receive logs from remote location
+# rsyslog send / receive remote logs
 Sending machine
 ```
 # for TCP use @@IP
@@ -80,6 +77,7 @@ tcpdump host IP-HOSTNAME
 ```
 ss -tulpan | grep syslog
 ```
+
 
 
 
